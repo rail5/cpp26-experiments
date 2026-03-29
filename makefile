@@ -14,8 +14,7 @@ LIBSTDCXX_EXP_LIB    := $(LIBSTDCXX_BUILD)/src/experimental/.libs
 CXXFLAGS             := -std=c++26 -freflection -O2 -B$(GCC_BINDIR) -isystem $(LIBSTDCXX_INC) -isystem $(LIBSTDCXX_INC_TARGET) -isystem $(LOCAL_GCC16_DIRECTORY)/libstdc++-v3/libsupc++/
 LDFLAGS              := -B$(GCC_BINDIR) -L$(LIBSTDCXX_LIB) -L$(LIBSTDCXX_EXP_LIB) -Wl,-rpath,$(LIBSTDCXX_LIB) -lstdc++exp
 
-# Directory structure has these buried in subdirectories
-CPP_FILES := $(shell find . -name '*.cpp')
+CPP_FILES := $(wildcard *.cpp)
 # Just mirror the source directory structure into bin/
 BINARIES := $(patsubst %.cpp,bin/%,$(CPP_FILES))
 

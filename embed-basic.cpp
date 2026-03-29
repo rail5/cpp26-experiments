@@ -6,7 +6,7 @@
 
 int main() {
 	const unsigned char embedded_string[] = {
-		#embed "hello.txt"
+		#embed "res/hello.txt"
 	};
 	std::cout << embedded_string << std::endl;
 

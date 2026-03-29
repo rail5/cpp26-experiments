@@ -1,6 +1,6 @@
 This repository just contains a collection of small experiments with C++26's new features.
 
-Experiments are buried in subdirectories by category (e.g., `reflection/`, `contracts/`, etc)
+Experiments are `.cpp` files with name prefixes by category (e.g., `reflection-` for experiments with C++26's static reflection features). The makefile is configured to build all of these experiments, and the resulting binaries are placed in `bin/`.
 
 The makefile is configured to build with the [latest GCC-16 snapshot](https://gcc.gnu.org/pub/gcc/snapshots/LATEST-16/). GCC 16 is building in support for C++26 and its static reflection features, but is still in development.
 
