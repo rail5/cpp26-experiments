@@ -16,13 +16,13 @@ LDFLAGS              := -B$(GCC_BINDIR) -L$(LIBSTDCXX_LIB) -Wl,-rpath,$(LIBSTDCX
 # Directory structure has these buried in subdirectories
 CPP_FILES := $(shell find . -name '*.cpp')
 # Just mirror the source directory structure into bin/
-BINARIES := $(patsubst %.cpp,bin/%.o,$(CPP_FILES))
+BINARIES := $(patsubst %.cpp,bin/%,$(CPP_FILES))
 
 all: $(BINARIES)
 
-bin/%.o: %.cpp
+bin/%: %.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
 
 clean:
 	rm -rf bin/*
