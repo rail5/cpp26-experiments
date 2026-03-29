@@ -13,14 +13,18 @@ LIBSTDCXX_LIB        := $(LIBSTDCXX_BUILD)/src/.libs
 CXXFLAGS             := -std=c++26 -freflection -O2 -B$(GCC_BINDIR) -isystem $(LIBSTDCXX_INC) -isystem $(LIBSTDCXX_INC_TARGET) -isystem $(LOCAL_GCC16_DIRECTORY)/libstdc++-v3/libsupc++/
 LDFLAGS              := -B$(GCC_BINDIR) -L$(LIBSTDCXX_LIB) -Wl,-rpath,$(LIBSTDCXX_LIB)
 
-
-CPP_FILES := $(wildcard *.cpp)
-BINARIES  := $(patsubst %.cpp,bin/%,$(CPP_FILES))
+# Directory structure has these buried in subdirectories
+CPP_FILES := $(shell find . -name '*.cpp')
+# Just mirror the source directory structure into bin/
+BINARIES := $(patsubst %.cpp,bin/%.o,$(CPP_FILES))
 
 all: $(BINARIES)
 
-bin/%: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+bin/%.o: %.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f bin/*
+	rm -rf bin/*
+
+.PHONY: all clean
