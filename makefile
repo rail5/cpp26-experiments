@@ -9,9 +9,10 @@ LIBSTDCXX_BUILD      := $(GCC_BUILD)/$(TARGET)/libstdc++-v3
 LIBSTDCXX_INC        := $(LIBSTDCXX_BUILD)/include
 LIBSTDCXX_INC_TARGET := $(LIBSTDCXX_INC)/$(TARGET)
 LIBSTDCXX_LIB        := $(LIBSTDCXX_BUILD)/src/.libs
+LIBSTDCXX_EXP_LIB    := $(LIBSTDCXX_BUILD)/src/experimental/.libs
 
 CXXFLAGS             := -std=c++26 -freflection -O2 -B$(GCC_BINDIR) -isystem $(LIBSTDCXX_INC) -isystem $(LIBSTDCXX_INC_TARGET) -isystem $(LOCAL_GCC16_DIRECTORY)/libstdc++-v3/libsupc++/
-LDFLAGS              := -B$(GCC_BINDIR) -L$(LIBSTDCXX_LIB) -Wl,-rpath,$(LIBSTDCXX_LIB)
+LDFLAGS              := -B$(GCC_BINDIR) -L$(LIBSTDCXX_LIB) -L$(LIBSTDCXX_EXP_LIB) -Wl,-rpath,$(LIBSTDCXX_LIB) -lstdc++exp
 
 # Directory structure has these buried in subdirectories
 CPP_FILES := $(shell find . -name '*.cpp')
