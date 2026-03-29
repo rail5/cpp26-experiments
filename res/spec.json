@@ -1,0 +1,60 @@
+{
+	"classes": [
+		{
+			"name": "MyClass1",
+			"members": [
+				{
+					"name": "x",
+					"type": "int",
+					"default_value": 6,
+					"access": "public"
+				},
+				{
+					"name": "y",
+					"type": "std::string",
+					"default_value": "\"hello\"",
+					"access": "public"
+				},
+				{
+					"name": "z",
+					"type": "double",
+					"default_value": 3.14,
+					"access": "private"
+				}
+			],
+			"methods": [
+				{
+					"name": "reset",
+					"return_type": "void",
+					"parameters": [],
+					"body": "/* generated code to reset x, y, and z to their default values */"
+				}
+			]
+		},
+		{
+			"name": "MyClass2",
+			"members": [
+				{
+					"name": "a",
+					"type": "std::vector<int>",
+					"default_value": "{}",
+					"access": "public"
+				},
+				{
+					"name": "b",
+					"type": "std::map<std::string, int>",
+					"default_value": "{}",
+					"access": "public"
+				}
+			],
+			"methods": [
+				{
+					"name": "reset",
+					"return_type": "void",
+					"parameters": [],
+					"body": "/* generated code to reset a and b to their default values */"
+				}
+			]
+		}
+	]
+}
